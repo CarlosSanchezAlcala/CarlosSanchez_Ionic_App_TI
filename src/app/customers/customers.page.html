@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center">Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list align="center" style="margin-top: 10px; margin-bottom: 10px; align-content: center;">
+    <ion-item *ngFor="let cliente of clientes" style="font-size: 12px">
+      <ion-label>{{cliente.nombrecliente}} {{cliente.apellidoPaternoCliente}} {{cliente.apellidoMaternoCliente}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="goToInicio()">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="goToCustomers()">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Clientes</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="about">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>About</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>

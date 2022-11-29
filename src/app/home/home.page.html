@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center" style="font-size: 15px">Hola {{nombreUsuario}}!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list style="margin-top: 10px; margin-bottom: 10px">
+    <ion-list-header>
+      <ion-label style="font-size: 20px">Estos son tus datos personales:</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Apellidos: {{apellidoPaternoUsuario}} {{apellidoMaternoUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>DNI: {{dniUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Celular: {{celularUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo: {{correoUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dirección: {{direccionUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Turno: {{turnoUsuario}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="goToInicio()">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="goToCustomers()">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Clientes</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <ion-icon name="map"></ion-icon>
+        <ion-label>Map</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="about">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>About</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>
