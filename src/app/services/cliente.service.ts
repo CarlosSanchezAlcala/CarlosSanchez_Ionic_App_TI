@@ -14,4 +14,12 @@ export class ClienteService {
     return this.http.get<ClienteDto[]>(`${environment.apiUrl}/Clientes`);
   }
 
+  register(Clientes: ClienteDto) {
+    return this.http.post<ClienteDto>(`${environment.apiUrl}/Clientes`, Clientes);
+  }
+
+  findByName(nombrecliente: string) {
+    return this.http.get<ClienteDto[]>(`${environment.apiUrl}/Clientes/nombre/${nombrecliente}`);
+  }
+
 }

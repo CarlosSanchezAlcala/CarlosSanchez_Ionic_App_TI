@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar align="center">
+    <ion-title>Nuevo Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="clienteForm" (ngSubmit)="registerClientes()" >
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input formControlName="nombrecliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido Paterno:</ion-label>
+      <ion-input formControlName="apellidoPaternoCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido Materno:</ion-label>
+      <ion-input formControlName="apellidoMaternoCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>DNI:</ion-label>
+      <ion-input formControlName="dniCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo:</ion-label>
+      <ion-input formControlName="correoCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Celular:</ion-label>
+      <ion-input formControlName="celularCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dirección:</ion-label>
+      <ion-input formControlName="direccionCliente" placeholder="Escriba aquí."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ubicación:</ion-label>
+      <ion-select formControlName="ubigeo" placeholder="Seleccione su ubicación:">
+        <ion-select-option *ngFor="let ubigeo of ubigeos" [value]="ubigeo.id">
+          {{ubigeo.provincia}}, {{ubigeo.distrito}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button type="submit" color="success">
+      Guardar
+    </ion-button>
+    <ion-button [routerLink]="['../customers']" type="button" color="danger">
+      Cancelar
+    </ion-button>
+  </form>
+</ion-content>

@@ -8,5 +8,12 @@ correoCliente: string = '';
 celularCliente: string = '';
 direccionCliente: string = '';
 estadoCliente: string = '';
-ubigeo: string = '';
+ubigeo: Ubigeo | undefined;
+}
+
+export class Ubigeo {
+  id: string = '';
+  departamento?: string = '';
+  provincia?: string = '';
+  distrito?: string = '';
 }

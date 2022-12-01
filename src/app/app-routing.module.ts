@@ -26,6 +26,14 @@ const routes: Routes = [
   {
     path: 'prelogin',
     loadChildren: () => import('./prelogin/prelogin.module').then( m => m.PreloginPageModule)
+  },
+  {
+    path: 'cliente-save',
+    loadChildren: () => import('./cliente-save/cliente-save.module').then( m => m.ClienteSavePageModule)
+  },
+  {
+    path: 'usuario-save',
+    loadChildren: () => import('./usuario-save/usuario-save.module').then( m => m.UsuarioSavePageModule)
   }
 ];
 
