@@ -10,7 +10,8 @@ import {UsuarioDto} from "./dtos/usuario.dto";
 export class AppComponent implements OnInit{
   public appPages = [
     { title: 'Inicio', url: '/home', icon: 'home' },
-    { title: 'Customers', url: '/customers', icon: 'people' },
+    { title: 'Clientes', url: '/customers', icon: 'people' },
+    { title: 'Producto', url: '/producto', icon: 'pricetag' },
     { title: 'Cerrar Sesion', url: '/login', icon: 'exit' },
   ];
 

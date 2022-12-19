@@ -8,6 +8,8 @@ import {environment} from "../../environments/environment";
 })
 export class ClienteService {
 
+  clienteSelected: ClienteDto | undefined = undefined;
+
   constructor(private http: HttpClient) { }
 
   findAll() {
@@ -20,6 +22,14 @@ export class ClienteService {
 
   findByName(nombrecliente: string) {
     return this.http.get<ClienteDto[]>(`${environment.apiUrl}/Clientes/nombre/${nombrecliente}`);
+  }
+
+  update(Clientes: ClienteDto) {
+    return this.http.put<ClienteDto>(`${environment.apiUrl}/Clientes`, Clientes);
+  }
+
+  delete(idCliente: number) {
+    return this.http.delete(`${environment.apiUrl}/Clientes/delete/${idCliente}`);
   }
 
 }

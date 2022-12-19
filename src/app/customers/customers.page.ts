@@ -4,21 +4,24 @@ import {ClienteService} from "../services/cliente.service";
 import {ClienteDto} from "../dtos/cliente.dto";
 import {debounce, debounceTime, switchMap} from "rxjs";
 import {FormControl} from "@angular/forms";
+import {ViewWillEnter} from "@ionic/angular";
+import {AlertaService} from "../services/alerta.service";
 
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.page.html',
   styleUrls: ['./customers.page.scss'],
 })
-export class CustomersPage implements OnInit {
+export class CustomersPage implements ViewWillEnter {
 
   clientes: ClienteDto[] = [];
   searchControl: FormControl = new FormControl<any>('');
 
   constructor(private router: Router,
+              private alertaService: AlertaService,
               private clienteService: ClienteService) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getCliente();
     this.initSearch();
   }
@@ -37,8 +40,22 @@ export class CustomersPage implements OnInit {
     })
   }
 
-  goToNuevoCliente() {
+  getProducto() {
+    this.router.navigate(['producto'])
+  }
+
+  goToNuevoCliente(cliente?: ClienteDto) {
+    if (cliente) {
+      this.clienteService.clienteSelected = cliente;
+    }
     this.router.navigate(['/cliente-save'])
+  }
+
+  eliminarCliente(idCliente: number) {
+    this.clienteService.delete(idCliente).subscribe( () => {
+      this.alertaService.ShowMessage('Se elimino al cliente');
+      this.getCliente();
+    })
   }
 
   initSearch() {
@@ -56,5 +73,4 @@ export class CustomersPage implements OnInit {
       console.log('Respuesta:', res)
     });
   }
-
 }

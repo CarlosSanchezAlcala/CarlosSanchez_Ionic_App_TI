@@ -22,7 +22,7 @@ export class ClienteSavePage implements OnInit {
 
   constructor(private router: Router,
               private fb: FormBuilder,
-              private clienteService: ClienteService,
+              public clienteService: ClienteService,
               private toastController: ToastController,
               private ubigeoService: UbigeoService) { }
 
@@ -64,6 +64,29 @@ export class ClienteSavePage implements OnInit {
       estadoCliente: ['A'],
       ubigeo: [null]
     });
+    if (this.clienteService.clienteSelected) {
+      const cliente = this.clienteService.clienteSelected;
+      this.clienteForm.patchValue({
+        idCliente: cliente.idCliente,
+        nombrecliente: cliente.nombrecliente,
+        apellidoPaternoCliente: cliente.apellidoPaternoCliente,
+        apellidoMaternoCliente: cliente.apellidoMaternoCliente,
+        dniCliente: cliente.dniCliente,
+        correoCliente: cliente.correoCliente,
+        celularCliente: cliente.celularCliente,
+        direccionCliente: cliente.direccionCliente,
+        estadoCliente: cliente.estadoCliente,
+        ubigeo: cliente.ubigeo?.id,
+      })
+    }
+  }
+
+  save() {
+    if(this.clienteService.clienteSelected) {
+      this.updateCliente();
+    } else {
+      this.registerClientes()
+    }
   }
 
   registerClientes() {
@@ -74,6 +97,18 @@ export class ClienteSavePage implements OnInit {
     this.clienteService.register(clientes).subscribe(res => {
       this.clienteForm.reset();
       this.ShowMessage(`Registraste a ${res.nombrecliente} como nuevo cliente`);
+      this.router.navigate(['../customers']);
+    })
+  }
+
+  updateCliente() {
+    const clientes: ClienteDto = this.clienteForm.value;
+    clientes.ubigeo = {
+      id: this.clienteForm.controls['ubigeo'].value
+    }
+    this.clienteService.update(clientes).subscribe(res => {
+      this.clienteForm.reset();
+      this.ShowMessage(`Actualizar a ${res.nombrecliente} como nuevo cliente`);
       this.router.navigate(['../customers']);
     })
   }

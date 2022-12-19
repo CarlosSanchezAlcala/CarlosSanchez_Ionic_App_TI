@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Route, Router} from "@angular/router";
+import {AlertController} from "@ionic/angular";
 
 @Component({
   selector: 'app-prelogin',
@@ -8,7 +9,8 @@ import {Route, Router} from "@angular/router";
 })
 export class PreloginPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private alertController: AlertController) { }
 
   ngOnInit() {
   }

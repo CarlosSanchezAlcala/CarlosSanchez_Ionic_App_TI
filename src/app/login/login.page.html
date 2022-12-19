@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content>
+
+  <div align="center" style="border-radius: 60px; margin: 15px">
+    <ion-img align="center" src="./assets/LogoSkyFood.png" style="width: 300px"></ion-img>
+  </div>
+
   <form [formGroup]="loginForm" (ngSubmit)="login()" style="margin-left: 10px; margin-right: 10px; border-radius: 60px; margin-top: 70px">
     <ion-item lines="full">
       <ion-label position="floating">Correo</ion-label>
@@ -18,7 +23,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="primary" expand="block">Ingresar</ion-button>
+        <ion-button type="submit" color="danger" expand="block">Ingresar</ion-button>
       </ion-col>
     </ion-row>
   </form>

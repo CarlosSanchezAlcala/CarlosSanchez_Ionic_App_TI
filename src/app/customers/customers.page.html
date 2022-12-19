@@ -6,16 +6,27 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-searchbar [formControl]="searchControl" placeholder="Buscar Cliente"></ion-searchbar>
+  <ion-searchbar animated="true" [formControl]="searchControl" placeholder="Buscar Cliente"></ion-searchbar>
 
-  <ion-list align="center" style="margin-top: 10px; margin-bottom: 10px; align-content: center;">
-    <ion-item *ngFor="let cliente of clientes" style="font-size: 12px">
-      <ion-label>{{cliente.nombrecliente}} {{cliente.apellidoPaternoCliente}} {{cliente.apellidoMaternoCliente}}</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card color="danger" *ngFor="let cliente of clientes">
+    <ion-card-header>
+      <ion-card-title>{{cliente.nombrecliente}} {{cliente.apellidoPaternoCliente}} {{cliente.apellidoMaternoCliente}}</ion-card-title>
+      <ion-card-subtitle>{{cliente.celularCliente}}</ion-card-subtitle>
+      <ion-card-subtitle>{{cliente.correoCliente}}</ion-card-subtitle>
+    </ion-card-header>
 
-  <div align="center">
-  <ion-button (click)="goToNuevoCliente()">Nuevo Cliente</ion-button>
-  </div>
+    <ion-card-content>
+      Datos Personales.
+    </ion-card-content>
+
+    <ion-button color="warning" (click)="goToNuevoCliente(cliente)">Actualizar</ion-button>
+    <ion-button color="warning" (click)="eliminarCliente(cliente.idCliente)">Eliminar</ion-button>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="warning" (click)="goToNuevoCliente()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

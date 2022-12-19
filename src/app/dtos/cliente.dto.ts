@@ -1,5 +1,5 @@
 export class ClienteDto {
-idCliente: string = '';
+idCliente: number = 0;
 nombrecliente: string = '';
 apellidoPaternoCliente: string = '';
 apellidoMaternoCliente: string = '';

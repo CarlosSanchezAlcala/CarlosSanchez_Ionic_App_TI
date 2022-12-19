@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar align="center">
-    <ion-title>Nuevo Cliente</ion-title>
+    <ion-title>{{clienteService.clienteSelected ? 'Actualizar Cliente' : 'Nuevo Cliente' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <form [formGroup]="clienteForm" (ngSubmit)="registerClientes()" >
+  <form [formGroup]="clienteForm" (ngSubmit)="save()" >
     <ion-item>
       <ion-label>Nombre:</ion-label>
       <ion-input formControlName="nombrecliente" placeholder="Escriba aquí."></ion-input>
@@ -44,7 +44,7 @@
       </ion-select>
     </ion-item>
     <ion-button type="submit" color="success">
-      Guardar
+      {{clienteService.clienteSelected ? 'Actualizar' : 'Guardar' }}
     </ion-button>
     <ion-button [routerLink]="['../customers']" type="button" color="danger">
       Cancelar

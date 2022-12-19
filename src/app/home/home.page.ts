@@ -58,4 +58,8 @@ export class HomePage implements OnInit {
     this.router.navigate(['login']).then();
   }
 
+  getProducto() {
+    this.router.navigate(['producto'])
+  }
+
 }
